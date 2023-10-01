@@ -2,10 +2,10 @@
 
 # Update project dependencies
 echo "Updating project dependencies..."
-npm update --save
+yarn upgrade
 
 # Check for vulnerabilities
 echo "Checking for vulnerabilities..."
-npm audit fix
+yarn audit
 
 echo "Dependency update and vulnerability check complete."

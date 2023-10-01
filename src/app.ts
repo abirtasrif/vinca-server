@@ -1,9 +1,9 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import ExpressMongoSanitize from 'express-mongo-sanitize';
-import hpp from 'hpp';
+import mongoSenitize from 'express-mongo-sanitize';
 import helmet from 'helmet';
+import hpp from 'hpp';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
@@ -12,9 +12,9 @@ class App {
 
   constructor() {
     this.app = express();
-    this.conectToDatabase();
-    this.setUpRoutes();
-    this.conectToDatabase();
+    this.configureMiddlewares();
+    this.setupRoutes();
+    this.connectToDatabase();
   }
 
   private configureMiddlewares(): void {
@@ -26,18 +26,18 @@ class App {
     );
     this.app.use(cors());
     this.app.use(morgan('dev'));
-    this.app.use(ExpressMongoSanitize());
+    this.app.use(mongoSenitize());
     this.app.use(helmet());
     this.app.use(hpp());
   }
 
-  private setUpRoutes(): void {
+  private setupRoutes(): void {
     this.app.get('/', (req: Request, res: Response) => {
-      res.status(200).json({ message: 'Welcome to Vinca Server' });
+      res.status(200).json({ message: 'Welcome to Mimosa server!' });
     });
   }
 
-  private conectToDatabase(): void {
+  private connectToDatabase(): void {
     const URI = process.env.MONGO_URI as string;
 
     mongoose
