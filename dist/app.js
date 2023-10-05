@@ -36,7 +36,7 @@ class App {
     }
     setupRoutes() {
         this.app.get('/', (req, res) => {
-            res.status(200).json({ message: 'Welcome to Mimosa server!' });
+            res.status(200).json({ message: 'Welcome to Vinca server!' });
         });
         // bypassed api
         this.app.use('/api/auth', auth_route_1.default);

@@ -38,7 +38,7 @@ class App {
 
   private setupRoutes(): void {
     this.app.get('/', (req: Request, res: Response) => {
-      res.status(200).json({ message: 'Welcome to Mimosa server!' });
+      res.status(200).json({ message: 'Welcome to Vinca server!' });
     });
 
     // bypassed api
